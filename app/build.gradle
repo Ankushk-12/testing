@@ -50,5 +50,6 @@ tasks.withType(Jar) {
             'Main-Class': 'testing.App'
         )
     }
-    println "The secret is: ${System.getenv('USER_NAME')}"
+    def env = System.getenv('ENVIRONMENT')
+    println "Current environment: ${env}" 
 }
