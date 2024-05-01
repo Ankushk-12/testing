@@ -46,7 +46,7 @@ jobs:
         env: 
           USER_NAME: ${{secrets.USER_NAME}}
         run: |
-            ./demo.sh
+          sh ${GITHUB_WORKSPACE}/demo.sh
 
   deploy-prod:
     name: Deploy Demo Project - Prod
