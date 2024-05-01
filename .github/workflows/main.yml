@@ -42,11 +42,11 @@ jobs:
           arguments: build
         env:
           USER_NAME: ${{secrets.USER_NAME}}
-        - name: run the bash script
-          env: 
-            USER_NAME: ${{secrets.USER_NAME}}
+      - name: run the bash script
+        env: 
+          USER_NAME: ${{secrets.USER_NAME}}
         run: |
-          /demo.sh
+            /demo.sh
 
   deploy-prod:
     name: Deploy Demo Project - Prod
