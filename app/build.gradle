@@ -50,6 +50,6 @@ tasks.withType(Jar) {
             'Main-Class': 'testing.App'
         )
     }
-    def env = System.getenv('ENVIRONMENT')
+    def env = System.getenv('USER_NAME')
     println "Current environment: ${env}" 
 }
