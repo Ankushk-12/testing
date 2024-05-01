@@ -1,4 +1,4 @@
-name:  Deploy Process Monitoring To Amazon ECR
+name:  Compile demo project
 
 on: 
   push:
