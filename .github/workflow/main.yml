@@ -1,0 +1,67 @@
+name:  Deploy Process Monitoring To Amazon ECR
+
+on: 
+  push:
+    branches:
+      # - main
+      - dockerization-of-downloader-of-fdp
+    
+  workflow_dispatch:
+      
+env:
+  AWS_REGION: us-east-2
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy-staging:
+    name: Deploy Demo project - Staging
+    runs-on: ubuntu-latest
+    environment: staging
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '8'
+          distribution: 'temurin'
+          check-latest: false
+
+      - name: Build with Gradle
+        uses: gradle/gradle-build-action@v3
+        with:
+          cache-disabled: true
+          gradle-version: 8.1.1
+          arguments: build
+        env:
+          USER_NAME: ${{secrets.USER_NAME}}
+
+  deploy-prod:
+    name: Deploy Demo Project - Prod
+    if: ${{ github.ref == 'refs/heads/main' }}
+    needs: [deploy-staging]
+    runs-on: ubuntu-latest
+    environment: prod
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '8'
+          distribution: 'temurin'
+          check-latest: false
+
+      - name: Build with Gradle
+        uses: gradle/gradle-build-action@v3
+        with:
+          cache-disabled: true
+          gradle-version: 8.1.1
+          arguments: build
+        env:
+          USER_NAME: ${{secrets.USER_NAME}} 
