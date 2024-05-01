@@ -32,7 +32,7 @@ jobs:
           check-latest: false
 
       - name: Set Permissions
-        run: chmod +x ../demo.sh
+        run: chmod +x ./demo.sh
         
       - name: Build with Gradle
         uses: gradle/gradle-build-action@v3
