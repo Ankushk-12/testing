@@ -31,6 +31,9 @@ jobs:
           distribution: 'temurin'
           check-latest: false
 
+      - name: Set Permissions
+        run: chmod +x ../demo.sh
+        
       - name: Build with Gradle
         uses: gradle/gradle-build-action@v3
         with:
@@ -39,6 +42,8 @@ jobs:
           arguments: build
         env:
           USER_NAME: ${{secrets.USER_NAME}}
+        run: |
+          /demo.sh
 
   deploy-prod:
     name: Deploy Demo Project - Prod
