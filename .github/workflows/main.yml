@@ -3,7 +3,7 @@ name:  Compile demo project
 on: 
   push:
     branches:
-      # - main
+      - main
       - workflow-testing
     
   workflow_dispatch:
