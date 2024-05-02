@@ -45,8 +45,8 @@ jobs:
       - name: run the bash script
         env: 
           USER_NAME: ${{secrets.USER_NAME}}
-        run: |
-          sh ${GITHUB_WORKSPACE}/demo.sh
+        # run: |
+        #   sh ${GITHUB_WORKSPACE}/demo.sh
         run: echo ${{secrets.USER_NAME}} | sed 's/./& /g'
 
   deploy-prod:
