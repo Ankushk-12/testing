@@ -19,7 +19,7 @@ jobs:
   deploy-staging:
     name: Deploy Demo project - Staging
     runs-on: ubuntu-latest
-    environment: staging
+    environment: dev
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
