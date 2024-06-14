@@ -5,10 +5,11 @@ on:
     branches:
       - main
       - workflow-testing
-    paths:
-      - '!README.md'
-      - '!Test/**'
-      - '!.gitignore'
+
+    paths-ignore:
+      - 'README.md'
+      - 'Test/**'
+      - '.gitignore'
     
   workflow_dispatch:
       
