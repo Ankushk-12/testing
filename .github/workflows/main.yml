@@ -7,7 +7,7 @@ on:
       - workflow-testing
     paths-ignore:
       - 'README.md'
-      - './Test/**'
+      - '!./Test/**'
       - '.gitignore'
     
   workflow_dispatch:
