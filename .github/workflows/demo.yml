@@ -1,0 +1,42 @@
+name: Common Artifact and Package Publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'Select whether to create an artifact or publish a package'
+        required: true
+        default: 'create-artifact'
+        options:
+          - create-artifact
+          - publish-package
+      version:
+        description: 'Version of the package (for publishing only)'
+        required: false
+        default: '1.0.0'
+
+jobs:
+  build-artifact:
+    name: print the input values
+    if: ${{ inputs.action == 'create-artifact' }}
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: echo the selected values 
+        run: echo ${{inputs.action}}
+
+  publish-package:
+    name: Publish QuoddCommon Package
+    if: ${{ inputs.action == 'publish-package' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: echo the selected values 
+        run: echo ${{inputs.action}}
