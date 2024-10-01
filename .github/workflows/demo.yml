@@ -18,7 +18,7 @@ on:
 jobs:
   build-artifact:
     name: print the input values
-    if: ${{ github.ref == 'refs/heads/main' && inputs.action == 'create-artifact' }}
+    if: ${{ inputs.action == 'create-artifact' }}
     runs-on: ubuntu-latest
 
     permissions:
@@ -31,7 +31,7 @@ jobs:
 
   publish-package:
     name: Publish QuoddCommon Package
-    if: ${{ github.ref == 'refs/heads/main' && inputs.action == 'publish-package' }}
+    if: ${{ inputs.action == 'publish-package' }}
     runs-on: ubuntu-latest
     permissions:
       contents: read
