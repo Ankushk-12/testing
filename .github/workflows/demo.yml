@@ -1,6 +1,10 @@
 name: Common Artifact and Package Publish
 
 on:
+  push:
+   branches:
+    - main
+
   workflow_dispatch:
     inputs:
       action:
@@ -18,7 +22,7 @@ on:
 jobs:
   build-artifact:
     name: print the input values
-    if: ${{ inputs.action == 'create-artifact' }}
+    if: ${{ github.ref == 'refs/heads/main' || inputs.action == 'create-artifact' }}
     runs-on: ubuntu-latest
 
     permissions:
@@ -31,7 +35,7 @@ jobs:
 
   publish-package:
     name: Publish QuoddCommon Package
-    if: ${{ inputs.action == 'publish-package' }}
+    if: ${{ github.ref == 'refs/heads/main' || inputs.action == 'publish-package' }}
     runs-on: ubuntu-latest
     permissions:
       contents: read
