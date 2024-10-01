@@ -1,10 +1,6 @@
 name: Common Artifact and Package Publish
 
 on:
-  push:
-    branches:
-      - dispatch 
-
   workflow_dispatch:
     inputs:
       action:
